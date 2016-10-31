@@ -6,7 +6,7 @@ The idea should be familiar. Write your generator as a parameterless
 C function that returns a 32-bit unsigned integer. Place the function in
 main.c and use
 ```
-		./make
+		make
 		./diead
 ```
 to compile and run the binary to apply few statistical tests on the generator.
