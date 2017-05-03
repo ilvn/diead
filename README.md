@@ -44,9 +44,9 @@ for reference.
 
 ## Stand-ins
 
-* [Dieharder] (https://www.phy.duke.edu/~rgb/General/dieharder.php)
-* [TestU01] (http://simul.iro.umontreal.ca/testu01/tu01.html)
-* [NIST Statistical Test Suite] (http://csrc.nist.gov/groups/ST/toolkit/rng/)
+* [Dieharder](https://www.phy.duke.edu/~rgb/General/dieharder.php)
+* [TestU01](http://simul.iro.umontreal.ca/testu01/tu01.html)
+* [NIST Statistical Test Suite](http://csrc.nist.gov/groups/ST/toolkit/rng/)
 
 ## About the name
 
