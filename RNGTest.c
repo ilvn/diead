@@ -41,7 +41,7 @@
 /* ---------------------------------------------------------------------------*/
 
 /* Gorilla test                                                               */
-double gorilla( uint32_t (*rng)())
+double gorilla( uint32_t (*rng)(void))
 {
     const uint32_t a = 1, m = 26;
     const double n1 = 26., stdd = 4170;
@@ -221,7 +221,7 @@ double pcoll(uint32_t m, uint32_t n, uint32_t c)
    returned by calling rng(). (See Tsang's paper "Tuning the collision test
    for stringency" for details if needed.)
 */
-double collision( uint32_t (*rng)() )
+double collision( uint32_t (*rng)(void) )
 {
     const uint32_t logm = 24;
 
@@ -311,7 +311,7 @@ double collision( uint32_t (*rng)() )
 /*********************************************************************/
 /**** Birthday spacing test ******************************************/
 
-double bday( uint32_t (*rng)() )
+double bday( uint32_t (*rng)(void) )
 {
     size_t i, j, k, m = 4096;
     uint32_t t[4096], obs[11] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -385,7 +385,7 @@ double bday( uint32_t (*rng)() )
 
 
 /*  GCD Test */
-double gcd( uint32_t (*rng)() )
+double gcd( uint32_t (*rng)(void) )
 {
     const unsigned long n = 10000000;
 
@@ -472,7 +472,7 @@ double gcd( uint32_t (*rng)() )
    n is the no. of uint32_tegers (assume 32 bits) being tested. The function
    returns a uniform random no. in [0,1]. The given random nos. are failed if the
    return value is equal to or larger than 0.999 */
-double frequency( uint32_t (*rng)() )
+double frequency( uint32_t (*rng)(void) )
 {
 
     const unsigned long m = 10000000;
@@ -518,7 +518,7 @@ double frequency( uint32_t (*rng)() )
    tested. The given random nos. are failed if the return value is equal to or larger
    than 0.9999.
    CRYPYTO '90, U.M. Maurer, "A universal statistical test for random bit generators". */
-double maurer(  uint32_t (*rng)()  )
+double maurer(  uint32_t (*rng)(void)  )
 {
     const uint32_t n = 10000000;
     uint32_t *t;

@@ -36,7 +36,7 @@
 *  This sample function implements the Sapparot-2 pseudorandom number generator
 *  as described at http://literatecode.com/sapparot2
 */
-static uint32_t sapparot2( void )
+static uint32_t sapparot2(void)
 {
     static uint32_t a = 0, b = 0, c = 0; /* {a,b,c} is a state */
     register uint32_t m;
@@ -46,30 +46,32 @@ static uint32_t sapparot2( void )
     b = (b + ((a << 1) + 1)) ^ R(b, 5);
     a += 0x9e3779b9;
     a = R(a, 7);
-    m = a, a = b, b = m;
+    m = a;
+    a = b;
+    b = m;
 
     return (c ^ b ^ a);
 } /* sapparot2 */
 
 
 /* -------------------------------------------------------------------------- */
-int main( void )
+int main(void)
 {
     struct {
         char *name;
         double p;
-    } t[6];
-    int i, l = 0;
-
-    t[l].name = "Maurer's",         t[l++].p = maurer(TEST_RNG);
-    t[l].name = "Frequency",        t[l++].p = frequency(TEST_RNG);
-    t[l].name = "GCD",              t[l++].p = gcd(TEST_RNG);
-    t[l].name = "Birthday spacing", t[l++].p = bday(TEST_RNG);
-    t[l].name = "Gorilla",          t[l++].p = gorilla(TEST_RNG);
-    t[l].name = "Collision",        t[l++].p = collision(TEST_RNG);
+    } t[] = {
+        {.name = "Maurer's",         .p = maurer(TEST_RNG)},
+        {.name = "Frequency",        .p = frequency(TEST_RNG)},
+        {.name = "GCD",              .p = gcd(TEST_RNG)},
+        {.name = "Birthday spacing", .p = bday(TEST_RNG)},
+        {.name = "Gorilla",          .p = gorilla(TEST_RNG)},
+        {.name = "Collision",        .p = collision(TEST_RNG)}
+    };
+    const size_t tests = sizeof(t) / sizeof(t[0]);
 
     printf("\nTests Summary:\n");
-    for (i = 0; i < l; i++) {
+    for (size_t i = 0; i < tests; i++) {
         printf("* %s test: p = %6.4f\n", t[i].name, t[i].p);
     }
 
