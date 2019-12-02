@@ -1,18 +1,17 @@
-COMPLR = $(shell which clang >/dev/null; echo $$?)
-ifeq "$(COMPLR)" "0"
-CC=clang
+ifeq "$(shell which clang >/dev/null; echo $$?)" "0"
+	CC := clang
 else
-CC=gcc
+	CC := gcc
 endif
 
-#CC=gcc
+CFLAGS := -O3 -pedantic -Wall -Wextra -std=c99
 ifeq ($(CC), clang)
-    CFLAGS=-O3 -pedantic -Wall -Wextra -Weverything
-else
-    CFLAGS=-O3 -pedantic -Wall -Wextra -std=c99
+    CFLAGS += -Weverything
 endif
 
-TGT=diead
+TGT := diead
+
+.PHONY: clean all
 
 $(TGT): main.o RNGTest.o RNGUtil.o
 	@echo [$(CC)] compiling $@
@@ -32,8 +31,6 @@ RNGUtil.o: RNGUtil.c RNGUtil.h
 	@$(CC) $(CFLAGS) -c -o $@ $<
 
 all: $(TGT)
-
-.PHONY: clean
 
 clean:
 	@echo cleaning everything
